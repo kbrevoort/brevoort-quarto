@@ -1,0 +1,24 @@
+% TODO: Add custom LaTeX header directives here
+
+\usepackage{setspace}
+\usepackage{sectsty}
+\usepackage{authblk}
+\usepackage{scrlayer-scrpage}
+\newcommand\fnote[1]{\captionsetup{font=small,
+                                   justification=justified,
+                                   textfont=normalfont}\caption*{#1}}
+\newcommand\RaggedRight{\raggedright}
+\preto\tabular{\par\singlespacing}
+\allsectionsfont{\singlespacing}
+\deffootnote[2em]{0em}{1em}{\textsuperscript{\thefootnotemark}}
+
+% Add space between caption and figure
+\setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt} 
+
+\usepackage{abstract}
+\renewcommand{\abstractnamefont}{\normalfont\normalsize\bfseries}
+% Default is \newcommand*\secfont{\sffamily\bfseries}
+\renewcommand*\sectfont{\rmfamily\mdseries\bfseries}
+
+%Add space between caption and figure
+\setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}

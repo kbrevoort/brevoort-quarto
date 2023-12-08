@@ -1,0 +1,45 @@
+\def\spacingset#1{\renewcommand{\baselinestretch}%
+{#1}\small\normalsize} \spacingset{1}
+
+$if(classify)$\rohead{$classify$}$endif$
+
+$if(journal.blinded)$
+  \spacingset{.8}
+  \bigskip
+  \bigskip
+  \bigskip
+  \begin{center}
+    {\LARGE\textbf{$title$}}
+  \end{center}
+  \smallskip
+  \bigskip
+  \spacingset{1}
+$else$
+  \maketitle
+$endif$
+\pagenumbering{gobble}
+
+\bigskip
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$if(jel)$
+\noindent\textbf{JEL Classification:} $for(jel)$$it$$sep$, $endfor$
+$endif$
+
+$if(keywords)$
+\noindent\textbf{Keywords:} $for(keywords)$$it$$sep$, $endfor$
+$endif$
+
+\vfill
+\clearpage
+
+\pagenumbering{arabic}
+\spacingset{1.9} % Don't change the spacing -- note from ASA template
+\parindent=20pt
+\parskip=0pt
+

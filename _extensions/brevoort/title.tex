@@ -1,0 +1,35 @@
+$if(journal.blinded)$
+  % If the paper is blinded for a journal, \maketitle will not be used
+$else$
+
+  % Title
+  $if(title)$\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}$endif$
+  
+  % Subtitle
+  $if(subtitle)$
+    % add subtitle to \maketitle -- from default quarto template
+    \usepackage{etoolbox}
+    \makeatletter
+      \providecommand{\subtitle}[1]{\apptocmd{\@title}{\par {\large #1 \par}}{}{}}
+    \makeatother
+    
+    \subtitle{$subtitle$}
+  $endif$
+  
+  $if(soleauthor)$
+    \author{$for(by-author)$$it.name.literal$ \\ $for(it.affiliations)$$if(it.name)$$it.name$ \\$endif$$sep$ \\$endfor$ $if(it.email)$$it.email$$endif$$sep$ $endfor$}
+  $else$
+    \setlength{\affilsep}{1em}
+    
+    $for(by-author)$
+      \author[$if(it.affiliations)$$for(it.affiliations)$$it.number$$sep$,$endfor$$endif$]{$it.name.literal$$if(it.acknowledgements)$\thanks{$if(it.attributes.corresponding)$Corresponding author. $endif$$if(it.email)$$it.email$ $endif$$it.acknowledgements$}$elseif(it.email)$\thanks{$if(it.attributes.corresponding)$Corresponding author. $endif$$it.email$}$elseif(it.attributes.corresponding)$\thanks{Corresponding author.}$endif$}
+    $endfor$
+    
+    $if(by-affiliation)$
+      $for(by-affiliation)$
+        \affil[$it.number$]{$it.name$}
+      $endfor$
+    $endif$
+  $endif$
+$endif$
+
