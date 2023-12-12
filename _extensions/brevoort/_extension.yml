@@ -16,7 +16,7 @@ contributes:
       tbl-cap-location: top
       fig-cap-location: top
       fig-dpi: 300
-      fig-pos: "Ht"
+      fig-pos: "ht"
       documentclass: scrartcl
       papersize: letter
       include-in-header: header.tex

@@ -1,15 +1,19 @@
 % TODO: Add custom LaTeX header directives here
 
 \usepackage{setspace}
-\usepackage{sectsty}
+%\usepackage{sectsty}
 \usepackage{authblk}
 \usepackage{scrlayer-scrpage}
-\newcommand\fnote[1]{\captionsetup{font=small,
+\newcommand\tablenote[1]{%\setlength\belowcaptionskip{0pt}
+                     \captionsetup{width=0.9\textwidth,
+                                   skip=0pt,
                                    justification=justified,
                                    textfont=normalfont}\caption*{#1}}
 \newcommand\RaggedRight{\raggedright}
 \preto\tabular{\par\singlespacing}
-\allsectionsfont{\singlespacing}
+
+% This line requires sectsty which has a conflict
+%\allsectionsfont{\singlespacing}
 \deffootnote[2em]{0em}{1em}{\textsuperscript{\thefootnotemark}}
 
 % Add space between caption and figure
@@ -18,7 +22,10 @@
 \usepackage{abstract}
 \renewcommand{\abstractnamefont}{\normalfont\normalsize\bfseries}
 % Default is \newcommand*\secfont{\sffamily\bfseries}
-\renewcommand*\sectfont{\rmfamily\mdseries\bfseries}
+\renewcommand*\sectfont{\rmfamily\mdseries\bfseries\setstretch{0.5}}
 
 %Add space between caption and figure
 \setlength{\belowcaptionskip}{15pt plus 3pt minus 2pt}
+
+\def\arraystretch{0.50}
+

@@ -2,8 +2,8 @@
 title: Brevoort Template
 format:
   brevoort-pdf:
-    keep-tex: true  
-  brevoort-html: default
+    keep-tex: true
+    keep-md: true  
 author:
   - name: Sarah Malloc
     affiliations:
@@ -30,12 +30,55 @@ geometry:
   - right=1.5in
 ---
 
-## Introduction {#sec-intro}
+```{r}
+#| include: false
+#| echo: false
+
+library(tidyverse)
+library(gt)
+
+f <- function(x) {
+  
+  byline <- strsplit(x, '\n')[[1]]
+  
+  if (any(hascap <- grepl('\\\\caption', byline))) {
+    afterpos <- which(hascap)
+  } else if (any(haslong <- grepl('\\\\begin\\{longtable\\}', byline))) {
+    afterpos <- which(haslong)
+  } else afterpos <- 0L
+  
+  ret_val <- append(byline, 
+                    '\\tablenote{This is my note which is very very very very very very very very very very very very very very very very very very very very very very very long.} \\\\ \n',
+                    afterpos) %>%
+    paste(collapse = '\n')
+  
+  class(ret_val) <- class(x)
+  attributes(ret_val) <- attributes(x)
+  
+  ret_val
+}
+```
+
+## Introduction with a very lengthy text description that will hopefully spread out over two or possibly even three lines {#sec-intro}
 
 *TODO* Create a template that demonstrates the appearance, formatting, layout, and functionality of your format. Learn more about journal formats at <https://quarto.org/docs/journals/>. See details from @CameronTrivedi2013.
 
+```{r}
+#| label: tbl-table1
+#| echo: false
+#| tbl-cap:  This is the first table of many
+
+# tbl-subcap: This is a subcaption
+
+gt::gt(mtcars %>% dplyr::slice(1:5)) %>%
+  gt::as_latex() %>%
+  f()
+```
+
+Take a look at @tbl-table1.
+
 \clearpage
-\singlespacing
+singlespacing
 \section*{References}
 
 ::: {#refs}

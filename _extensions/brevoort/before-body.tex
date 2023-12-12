@@ -27,6 +27,8 @@ $abstract$
 \end{abstract}
 $endif$
 
+\medskip
+
 $if(jel)$
 \noindent\textbf{JEL Classification:} $for(jel)$$it$$sep$, $endfor$
 $endif$
@@ -42,4 +44,7 @@ $endif$
 \spacingset{1.9} % Don't change the spacing -- note from ASA template
 \parindent=20pt
 \parskip=0pt
+\setlength{\topsep}{0pt}
+
+\captionsetup[subtable]{skip=0pt}
 
